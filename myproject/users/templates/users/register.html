@@ -9,3 +9,12 @@
 {% endblock header_image %}
 
 {% block header_title %}Register a New User{% endblock header_title %}
+
+{% block content %}
+    <h1>Register a New User</h1>
+    <form action="/users/register" method="POST">
+        {% csrf_token %} {% comment %}security token Cross-site Request Forgery attacks{% endcomment %} 
+        {{form}}
+        <button>Submit</button>
+    </form>
+{% endblock content %}
