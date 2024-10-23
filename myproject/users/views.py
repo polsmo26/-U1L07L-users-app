@@ -10,7 +10,8 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect("posts.list")
-    form = UserCreationForm()
+    else:
+        form = UserCreationForm()
     context = {
         'active_link' : 'register',
         'form':form
