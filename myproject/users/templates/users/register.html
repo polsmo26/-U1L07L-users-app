@@ -12,9 +12,21 @@
 
 {% block content %}
     <h1>Register a New User</h1>
-    <form action="/users/register" method="POST">
+    <form action="/users/register/" method="POST" class="p-4 border rounded bg-light text-dark">
         {% csrf_token %} {% comment %}security token Cross-site Request Forgery attacks{% endcomment %} 
-        {{form}}
+        {% comment %} {{form}} {% endcomment %}
+        <div class="mb-3">
+            <label for='{{form.username.id_for_label}}'>Username</label>
+            {{form.username}}   
+        </div>
+        <div class="mb-3">
+            <label for='{{form.password1.id_for_label}}'>Password</label>
+            {{form.password1}}
+        </div>
+        <div class="mb-3">
+            <label for='{{form.password2.id_for_label}}'>Password Confirmation</label>
+            {{form.password2}}
+        </div>
         <button>Submit</button>
     </form>
 {% endblock content %}
