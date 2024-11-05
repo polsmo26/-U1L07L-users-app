@@ -10,10 +10,3 @@ def about(request):
         'active_link':'about'
     }
     return render(request, 'about.html',context)
-
-# def register(request):
-#     context = {
-#         'active_link' : 'register'
-#     }
-#     return render(request, 'register.html',context)
-    

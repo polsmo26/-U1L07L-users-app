@@ -28,7 +28,6 @@ urlpatterns = [
     path('', views.index),
     path('about/', views.about),
     path('posts/', include('posts.urls')),
-    # path('register/', views.register)
     path('users/', include('users.urls'))
 ]
 
