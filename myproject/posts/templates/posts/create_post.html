@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Create a New Post{% endblock title %}
+{% block head %}
+{%load static%}
+{% comment %} <link rel="stylesheet" href="{%static 'css/posts.css'%}"> {% endcomment %}
+{% endblock head %}
+{% comment %} {% block header_image %} {% endcomment %}
+{% comment %} <img src="{{post.banner.url}}" alt="{{post.title}}"> {% endcomment %}
+
+{% comment %} {% endblock header_image %} {% endcomment %}
+{% block header_title %}Create a new post{% endblock header_title %}
+{% block content %}
+<div class="row justify-content-center">
+    <form action="/posts/create" method="POST" class="p-4 border rounded bg-light text-dark">
+        {% csrf_token %} {% comment %}security token Cross-site Request Forgery attacks{% endcomment %} 
+        {% comment %} {{form}} {% endcomment %}
+        {% comment %} display form  errors {% endcomment %}
+        {% if form.errors%}
+            <div class="alert alert-danger">
+                <ul>
+                    {%for field in form%}
+                        {%if field.errors%}
+                            <li>{{field.label}} : {{field.errors}}</li>
+                        {%endif%}
+                    {%endfor%}
+                    {% for error in form.non_field_errors %}
+                        <li>{{error}}</li>
+                    {%endfor%}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="mb-3 text-center">
+            <label for='{{form.title.id_for_label}}' class="col-sm-6 col-form-label">Title</label>
+            {{form.title}}   
+        </div>
+
+        <div class="mb-3 text-center">
+            <label for='{{form.body.id_for_label}}' class="col-sm-6 col-form-label">Body</label>
+            {{form.body}}   
+        </div>
+
+        <div class="mb-3 text-center">
+            <label for='{{form.slug.id_for_label}}' class="col-sm-6 col-form-label">Slug</label>
+            {{form.slug}}   
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-secondary">Post</button>
+        </div>
+        
+    </form>
+</div>
+{% endblock content %}

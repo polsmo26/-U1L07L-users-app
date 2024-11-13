@@ -32,7 +32,10 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if active_link == 'home' %}active{% endif %}" href="/">Home</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if active_link == 'about' %}active{% endif %}" href="/about">About</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if active_link == 'posts' %}active{% endif %}" href="{% url 'posts:list' %}">Posts</a></li>
+                        {%if user.is_authenticated%}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if active_link == 'posts_list' %}active{% endif %}" href="{% url 'posts:list' %}">Posts</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if active_link == 'create_post' %}active{% endif %}" href="{% url 'posts:create' %}">Create a New Post</a></li>
+                        {%endif%}
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if active_link == 'register' %}active{% endif %}" href="{% url 'users:register' %}">Register</a></li>
                         {% comment %} <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded {% if active_link == 'login' %}active{% endif %}" href="{% url 'users:login' %}">Login</a></li> {% endcomment %}
 
