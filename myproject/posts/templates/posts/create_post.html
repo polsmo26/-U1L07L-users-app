@@ -10,8 +10,8 @@
 {% comment %} {% endblock header_image %} {% endcomment %}
 {% block header_title %}Create a new post{% endblock header_title %}
 {% block content %}
-<div class="row justify-content-center">
-    <form action="/posts/create" method="POST" class="p-4 border rounded bg-light text-dark">
+<div class="justify-content-center mx-auto"  style="max-width:800px">
+    <form action="/posts/create" method="POST" enctype="multipart/form-data" class="p-2 border rounded bg-light text-dark">
         {% csrf_token %} {% comment %}security token Cross-site Request Forgery attacks{% endcomment %} 
         {% comment %} {{form}} {% endcomment %}
         {% comment %} display form  errors {% endcomment %}
@@ -44,6 +44,13 @@
             <label for='{{form.slug.id_for_label}}' class="col-sm-6 col-form-label">Slug</label>
             {{form.slug}}   
         </div>
+
+        <div class="mb-3 text-center">
+            <label for='{{form.banner.id_for_label}}' class="col-sm-6 col-form-label">Banner</label>
+            {{form.banner}}   
+        </div>
+
+        
 
         <div class="d-grid">
             <button type="submit" class="btn btn-secondary">Post</button>
